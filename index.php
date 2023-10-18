@@ -1,46 +1,34 @@
 <?php
 
-$test = 2147483648;
-$test = 21.47483648;
-$test = 'Hello';
-$test = "$test world";
-$test = 'Hello test';
+$a = 4;
+$b = 13;
+$c = 6;
 
-$test = NULL;
-$test = null;
-
-$test = TRUE;
-$test = FALSE;
-
-$test = true;
-$test = false;
-
-$test = [
-    'time' => time(),
-    'test' => 'asdfas',
-    'key' => [
-        'ti' => [
-            't' => 'time()'
-        ]
-    ]
-];
-
-$test = [
-    'test',
-    'hello',
-    'world',
-];
-
-$text = '';
-foreach ($test as $key => $value) {
-    $text .= $value . ' ';
+function sum($a) {
+    $result = 0;
+    foreach ($a as $key => $value) {
+        $result = $result+$value;
+    }
+    $result = $result/count($a);
+    return $result;
 }
-echo $text;
 
+$test = sum([
+    12, 34, 23, 73, 32
+]);
+
+$test = sum([
+    $a, $b, $c
+]);
+
+function foo($a) {
+    $result = 1;
+    foreach ($a as $key => $value) {
+        echo "k: " . $key . " v: " . $value . "\n";
+        $result = $result*$value;
+    }
+    return $result;
+}
+
+print_r(foo([2, 3, "test" => 56, 23, 65]));
 ?>
-<h1 style="color: brown;"><?= implode(' ', $test) ?></h1>
-<h2><?= implode(' ', $test) ?></h2>
-<h3><?= implode(' ', $test) ?></h3>
-<h4><?= implode(' ', $test) ?></h4>
-<h5><?= implode(' ', $test) ?></h5>
-<h6><?= implode(' ', $test) ?></h6>
