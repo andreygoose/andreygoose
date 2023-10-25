@@ -1,34 +1,72 @@
 <?php
 
-$a = 4;
-$b = 13;
-$c = 6;
+class Cat extends Animals {
+    public $myaukat;
 
-function sum($a) {
-    $result = 0;
-    foreach ($a as $key => $value) {
-        $result = $result+$value;
+    public function setMyaukat($myaukat)
+    {
+        $this->myaukat = $myaukat;
+        return $this;
     }
-    $result = $result/count($a);
-    return $result;
 }
 
-$test = sum([
-    12, 34, 23, 73, 32
-]);
+class Dog extends Animals {
+    public $layat;
 
-$test = sum([
-    $a, $b, $c
-]);
-
-function foo($a) {
-    $result = 1;
-    foreach ($a as $key => $value) {
-        echo "k: " . $key . " v: " . $value . "\n";
-        $result = $result*$value;
+    public function setLayat($layat)
+    {
+        $this->layat = $layat;
+        return $this;
     }
-    return $result;
 }
 
-print_r(foo([2, 3, "test" => 56, 23, 65]));
-?>
+class Animals {
+    public $poroda;
+
+    public $yest;
+
+    public $spat;
+
+    public function setSpat($spat) {
+        $this->spat = $spat;
+        return $this;
+    }
+}
+
+
+
+class Alert {
+    public $to;
+
+    public $title;
+
+    public $text;
+
+    public function setTo($to){
+        $this->to = $to;
+        return $this;
+    }
+
+    public function setTitle($title){
+        $this->title = $title;
+        return $this;
+    }
+
+    public function setText($text){
+        $this->text = $text;
+        return $this;
+    }
+
+
+    public function send() {
+        return mail($this->to, $this->title, $this->text);
+    }
+}
+
+$alert = new Alert();
+
+$alert->setTo([
+
+])->setTitle('Подписка оформлена')->setText('Спасибо за оформление подписки.');
+
+print_r($alert->send());
